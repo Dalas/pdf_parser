@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  pdf_parser:
+    build: .
+    container_name: pdf_parser
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./:/pdf-parser/"
+    depends_on:
+      - postgres
+    command: "python pdf_parser/manage.py runserver 0.0.0.0:8080"
+
+  postgres:
+    image: postgres:11.4
+    container_name: pdf_parser_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./docker/postgres/initdb.sql:/docker-entrypoint-initdb.d/init.sql"
