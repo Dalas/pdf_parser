@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "==1.9"
+django = "==1.11.29"
 psycopg2 = "*"
 pypdf2 = "*"
 aiohttp = "*"
